@@ -25,10 +25,35 @@ with!(mine, |greedy| {
 	assert!(!greedy.is_empty());
 });
 
-// the below fails as its been moved into with!
+// The below fails as its been moved into with!
 // println!("{:?}", mine);
-}
 ```
 
-see the [docs](https://docs.rs/with-api/) for more examples.
+### Borrowed
+```rust
+use with_api::bor_with;
 
+let immutable: usize = 27;
+
+bor_with!(immutable, |num| {
+	assert!(*num == 27);
+
+	// The below fails as it cannot be mutated.
+	// *num = 28;
+});
+```
+
+### Exclusively Borrowed
+```rust
+use with_api::mut_with;
+
+let protec: Mutex<HashMap<usize, String>> =
+    Mutex::new(Vec::new().into_iter().collect());
+
+mut_with!(protec.lock().unwrap(), |db| {
+    let _ = db.insert(42, "meaning of life".to_string());
+    assert!(!db.is_empty());
+
+	// lock released at end of scope.
+});
+```

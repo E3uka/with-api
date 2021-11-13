@@ -68,7 +68,7 @@ fn borrowed() {
 
     bor_with!(db.lock().unwrap(), |db| {
         assert_eq!(db.get("key").unwrap(), &"value".to_string());
-    })
+    });
 }
 
 #[test]
