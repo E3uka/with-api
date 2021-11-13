@@ -1,0 +1,14 @@
+[package]
+name = "with-api"
+version = "0.1.0"
+authors = ["Ebuka Agbanyim <ebuka7@outlook.com>"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+description = "Simple macro for shrinking scope"
+keywords = ["scope", "shrink"]
+categories = ["rust-patterns"]
+documentation = "https://docs.rs/with-api/"
+repository = "https://github.com/E3uka/with-api/"
+edition = "2018"
+
+[dependencies]
